@@ -2,23 +2,27 @@
   "name": "azure-event-grid-app",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ps-interactive/azure-event-grid-app.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Thomas Bell",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/ps-interactive/azure-event-grid-app/issues"
   },
   "homepage": "https://github.com/ps-interactive/azure-event-grid-app#readme",
   "dependencies": {
     "azure-eventgrid": "^1.6.0",
-    "express": "^4.17.1",
-    "ms-rest-azure": "^3.0.0"
+    "ms-rest-azure": "^3.0.0",
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1",
+    "pug": "2.0.0-beta11"
   }
 }
