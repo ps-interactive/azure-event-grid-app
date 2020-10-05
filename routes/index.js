@@ -11,10 +11,10 @@ router.get('/', function(req, res, next) {
     await client.sendEvents([
       {
         eventType: "CR.Orders.NewOrder",
-        subject: "orders/new/sku",
+        subject: "orders/new/online",
         dataVersion: "1.0",
         data: {
-          message: "this is a sample event",
+          message: "Order: Grey Boots, Count: 5, SKU: CR1001ONL38",
         }
       }
     ]);
