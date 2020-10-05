@@ -1,32 +1,29 @@
-const uuid = require('uuid').v4;
-const api = require('ms-rest-azure');
-const EventGrid = require("azure-eventgrid");
-const url = require('url');
+const { EventGridPublisherClient, AzureKeyCredential } = require("@azure/eventgrid");
 const express = require('express');
 const router = express.Router();
 
-/* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 
-  // const topic = '';
-  // const endpoint = '';
+  async function main() {
+    const accessKey = "";
+    const client = new EventGridPublisherClient(endpoint, new AzureKeyCredential(accessKey));
+    await client.sendEvents([
+      {
+        eventType: "CR.Orders.NewOrder",
+        subject: "orders/new/sku",
+        dataVersion: "1.0",
+        data: {
+          message: "this is a sample event",
+        }
+      }
+    ]);
+  }
 
-  // let client = new EventGrid(new api.TopicCredentials(topic));
-  // let hostname = url.parse(endpoint, true).host;
+  main().catch((err) => {
+    res.render('index', { title: `An error was encountered: ${err}` });
+  });
 
-  // let events = [{
-  //   id: uuid(),
-  //   subject: 'Quote',
-  //   dataVersion: '2.0',
-  //   eventType: 'CarvedRock.Orders.NewOrder',
-  //   data: { items : [{'sku': 'CRO1001GB', description: 'Grey Boots', count: '5'}] },
-  //   eventTime: new Date()
-  // }];
-
-  // client.publishEvents(hostname, events)
-  //       .then(result => Promise.resolve(console.log('Published events successfully.')))
-  //       .catch(err => console.log('An error ocurred ' + err));
 });
 
 module.exports = router;

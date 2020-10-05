@@ -16,8 +16,7 @@
   },
   "homepage": "https://github.com/ps-interactive/azure-event-grid-app#readme",
   "dependencies": {
-    "azure-eventgrid": "^1.6.0",
-    "ms-rest-azure": "^3.0.0",
+    "@azure/eventgrid": "next",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
