@@ -27,8 +27,8 @@ app.post('/store', (req, res) => {
   async function main() {
     const endpoint = "";
     const accessKey = "";
-    const client = new EventGridPublisherClient(endpoint, new AzureKeyCredential(accessKey));
-    await client.sendEvents([
+    const client = new EventGridPublisherClient(endpoint, "EventGrid", new AzureKeyCredential(accessKey));
+    await client.send([
       {
         eventType: "CR.Orders.NewOrder",
         subject: "orders/new/online",
